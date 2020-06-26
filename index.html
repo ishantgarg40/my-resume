@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    />
+    <title>My Resume</title>
+    <style>
+      body {
+        margin: 0;
+        background-color: #4caf50;
+      }
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding-top: 20px;
+        color: #fff;
+      }
+      .command {
+        height: 100px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Segoe UI', Arial, sans-serif;
+        font-weight: 900;
+        font-size: 22px;
+      }
+      h1 {
+        font-family: 'Segoe UI', Arial, sans-serif;
+        font-weight: 900;
+        /* font-size: 22px; */
+      }
+      .command div {
+        background-color: #000;
+        height: 50%;
+        width: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+      }
+      .lds-heart {
+        display: inline-block;
+        position: relative;
+        width: 80px;
+        height: 80px;
+        transform: rotate(45deg);
+        transform-origin: 40px 40px;
+      }
+      .lds-heart div {
+        top: 32px;
+        left: 32px;
+        position: absolute;
+        width: 32px;
+        height: 32px;
+        background: #fff;
+        animation: lds-heart 1.2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+      }
+      .lds-heart div:after,
+      .lds-heart div:before {
+        content: ' ';
+        position: absolute;
+        display: block;
+        width: 32px;
+        height: 32px;
+        background: #fff;
+      }
+      .lds-heart div:before {
+        left: -24px;
+        border-radius: 50% 0 0 50%;
+      }
+      .lds-heart div:after {
+        top: -24px;
+        border-radius: 50% 50% 0 0;
+      }
+      @keyframes lds-heart {
+        0% {
+          transform: scale(0.95);
+        }
+        5% {
+          transform: scale(1.1);
+        }
+        39% {
+          transform: scale(0.85);
+        }
+        45% {
+          transform: scale(1);
+        }
+        60% {
+          transform: scale(0.95);
+        }
+        100% {
+          transform: scale(0.9);
+        }
+      }
+      .copied {
+        font-family: 'Segoe UI', Arial, sans-serif;
+        font-size: 15px;
+        font-weight: 900;
+        opacity: 0;
+      }
+    </style>
+
+    <script>
+      function copyToClipboard() {
+        var elm = document.getElementById('my-command');
+        var copied = document.getElementById('copiedd');
+        // for Internet Explorer
+
+        if (document.body.createTextRange) {
+          var range = document.body.createTextRange();
+          range.moveToElementText(elm);
+          range.select();
+          document.execCommand('Copy');
+          copied.style.opacity = 1;
+        } else if (window.getSelection) {
+          // other browsers
+
+          var selection = window.getSelection();
+          var range = document.createRange();
+          range.selectNodeContents(elm);
+          selection.removeAllRanges();
+          selection.addRange(range);
+          document.execCommand('Copy');
+          copied.style.opacity = 1;
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="lds-heart"><div></div></div>
+      <h1>Run the following command to access my resume!</h1>
+      <div class="command">
+        <div id="my-command">npx ishant-garg-resume</div>
+      </div>
+      <button class="btn btn-primary" onclick="copyToClipboard()">
+        copy to clipboard
+      </button>
+      <div class="copied" id="copiedd">copied!</div>
+    </div>
+  </body>
+</html>
